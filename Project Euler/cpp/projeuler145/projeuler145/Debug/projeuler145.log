@@ -1,0 +1,3 @@
+﻿  projeuler145.cpp
+C:\Users\adbai\Documents\Python Scripts\Project Euler\cpp\projeuler145\projeuler145\projeuler145.cpp(30,21): warning C4244: 'initializing': conversion from 'double' to '__int64', possible loss of data
+  projeuler145.vcxproj -> C:\Users\adbai\Documents\Python Scripts\Project Euler\cpp\projeuler145\Debug\projeuler145.exe
