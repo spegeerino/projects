@@ -43,6 +43,10 @@ def list_copy(a):
     return list(a)
 
 def figurate(n, sides = 3):
+    '''returns the figurate numbers: by default we have 3 sided polygon = triangle numbers 1,3,6,10,15...
+    4 sides would give the square numbers 1,4,9,16,25...
+    5 sides would give the pentgonal numbers 1,5,12,22,35,...
+    '''
     return n * ((sides - 2)*n + 4 - sides) // 2
 
 def is_square(n):
