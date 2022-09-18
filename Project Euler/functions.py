@@ -1,5 +1,24 @@
 import math as m
 import numpy as np
+
+def gen_prime_sieve(upper):
+    primes = []
+    sieve = [True] * upper
+    sieve[0] = False
+    i = 1
+    while i < m.sqrt(upper) + 1:
+        if sieve[i]:
+            n = i + 1
+            primes.append(n)
+            for k in range(n*n - 1, upper, n):
+                sieve[k] = False
+        i += 1
+    while i < upper:
+        if sieve[i]:
+            primes.append(i+1)
+        i += 1
+    return primes
+
 def gcd2(a,b):
     x = max(a,b)
     y = a+b-x
@@ -77,6 +96,21 @@ def is_prime_sieve(n,primes):
         if p > m.sqrt(n):
             return True
     return is_prime(n)
+
+def fast_primes_test(x, bases):
+    #this doesn't work at all
+    # supposed to be based on fermat pseudoprimes (miller-rabin)
+    out = True
+    for b in bases:
+        exp = x - 1
+        while exp % 2 == 0:
+            check = pow(b, exp, x)
+            if check != 1:
+                out = out and ((check % x) == x-1)
+            exp //= 2
+        check = pow(b, exp, x)
+        out = out and (check == 1 or check == -1)
+    return out
 
 def next_prime(primes):
     i = primes[-1] + 1
