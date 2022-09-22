@@ -30,7 +30,7 @@ def sol(x):
     dp = {i:i*(i+1)//2 - 1 for i in ns_arr} #S(n, 1) for all n in ns_arr
     for p in range(2, max_k + 1):
         if dp[p] > dp[p-1]: #p is prime, essentially asking if S(p, p-1) > S(p-1, p-1); if p not prime then p gets sieved out and sums are equal 
-            sum_primes_less_p = dp[p-1] #S(p-1, p-1)
+            sum_primes_less_p = dp[p-1] #S(p-1, p-1), is the sum of primes less than p
             p_sqr = p*p 
             for n in ns_arr:
                 if n < p_sqr: #if n < p_sqr, no sieving to be done (no multiples of p that haven't already been sieved) so we quit out
