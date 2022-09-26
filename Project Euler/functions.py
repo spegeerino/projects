@@ -52,6 +52,13 @@ def digits(x):
         x = x // 10
     return
 
+def sum_of_digits(n):
+    out = 0
+    while n > 0:
+        out += n % 10
+        n //= 10
+    return out
+
 def list_gcd(x):
     out = x[0]
     for i in range(1, len(x)):
