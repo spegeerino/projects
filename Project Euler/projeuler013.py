@@ -32,15 +32,19 @@ class big_integer:
     def __str__(self):
         return "".join([str(x) for x in self.digits])
 
-with open("p013_nums.txt", "r") as file:
-    global nums
-    nums = []
-    file_str = file.readline()
-    while file_str:
-        nums.append(big_integer(file_str.strip()))
+def main():
+    with open("p013_nums.txt", "r") as file:
+        global nums
+        nums = []
         file_str = file.readline()
+        while file_str:
+            nums.append(big_integer(file_str.strip()))
+            file_str = file.readline()
 
-total = big_integer("0")
-for n in nums:
-    total += n
-print(str(total)[:10]) #first 10 digits
+    total = big_integer("0")
+    for n in nums:
+        total += n
+    print(str(total)[:10]) #first 10 digits
+
+if __name__ == "__main__":
+    main()
