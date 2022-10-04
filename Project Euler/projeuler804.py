@@ -33,6 +33,6 @@ def simplef(N):
     return count - 1 #remove (0,0) because not included 
 
 start = timeit.default_timer()
-print(simplef(10**12))
+print(simplef(10**16))
 end = timeit.default_timer()
 funcs.print_time_taken(start, end)
