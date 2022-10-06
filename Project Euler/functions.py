@@ -50,7 +50,7 @@ def digits(x):
     while x > 0:
         out.insert(0,x%10)
         x = x // 10
-    return
+    return out
 
 def sum_of_digits(n):
     out = 0
