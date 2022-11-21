@@ -4,28 +4,44 @@ import timeit
 import math
 import doctest
 from random import random, randint
-N = 10 ** 3
-count = 0
-def max_greater_than(n):
-    for i in range(12):
-        if n < i*i*i:
-            return i-1
-
-for i in range(1, N+1):
-    x = max_greater_than(i)
-    if i % x == 0:
-        count += 1
-print(count * 5, N - count)
-
-successes = 0
-fails = 0
-trials = 10 ** 7
-for _ in range(trials):
-    a = randint(1, 1000)
-    b = max_greater_than(a)
-    if a % b:
-        fails += 1
-    else:
-        successes += 1
-
-print((5*successes - fails)/trials)
+nvals = {}
+for n in range(1, 5000):
+    if n % 100 == 0:
+        print(n)
+    tup = [1,1,1,1,0]
+    count = 0
+    while tup[0] <= math.pow(n, 0.2):
+        tup[-1] += 1
+        if math.prod(tup) > n:
+            i = -2
+            while math.prod(tup) > n and i >= -len(tup):
+                tup[i] += 1
+                for j in range(i + 1, 0):
+                    tup[j] = tup[i]
+                i -= 1
+        if n % math.prod(tup) == 0:
+            # print(tup)
+            nums = {}
+            for k in tup:
+                if k in nums:
+                    nums[k] += 1
+                else:
+                    nums[k] = 1
+            toadd = 120
+            for k in nums:
+                toadd //= math.factorial(nums[k])
+            count += toadd
+    # print(count)
+    x = count / n
+    nvals[n] = x
+nums = []
+best = 0
+for k in nvals:
+    if nvals[k] > best:
+        best = nvals[k]
+        nums = []
+        nums.append((k, nvals[k]))
+    elif nvals[k] == best:
+        nums.append((k, nvals[k]))
+print(nums)
+print(best)

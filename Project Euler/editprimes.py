@@ -12,7 +12,7 @@ with open("primes.txt","r") as primes_file:
     file_list = primestring[1:-1].split(",")
     primes_list = [int(i.strip()) for i in file_list]
 
-out = f.list_copy(primes_list)
+out = list(primes_list)
 lower = 10 ** 4 + 10
 upper = 10 ** 8
 for i in range(lower + 1, upper, 2):
