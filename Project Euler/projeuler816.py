@@ -39,21 +39,6 @@ def sol(N):
                 smallest = d
             i -= 1
     print("done with x")
-    for m in range(len(ys)):
-       # m is for middle
-        i = m + 1
-        while i < len(ys) and (ys[i][1] - ys[m][1]) ** 2 < smallest:
-            d = dist_sq(ys[m], ys[i])
-            if d < smallest:
-                smallest = d
-            i += 1
-        i = m - 1
-        while i >= 0 and (ys[i][1] - ys[m][1]) ** 2 < smallest:
-            d = dist_sq(ys[m], ys[i])
-            if d < smallest:
-                smallest = d
-            i -= 1
-    print("done")
     return sqrt(smallest)
 
 print(f"ans = {round(sol(2000000), 9)}")
