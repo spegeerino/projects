@@ -201,19 +201,21 @@ def derangements(n):
 
 def pf(n):
     ''' returns the prime factorization of n as a dictionary'''
-    if n == 1:
-        return {}
-    for i in range(2, (int)(m.sqrt(n) + 1)):
-        if n % i == 0:
-            p_index = 0
-            newnum = n
-            while newnum % i == 0:
-                p_index += 1
-                newnum //= i
-            out = pf(newnum)
-            out[i] = p_index
-            return out
-    return {n:1}
+    def pf_helper(n, s):
+        if n == 1:
+            return {}
+        for i in range(s, (int)(m.sqrt(n) + 1)):
+            if n % i == 0:
+                p_index = 0
+                newnum = n
+                while newnum % i == 0:
+                    p_index += 1
+                    newnum //= i
+                out = pf_helper(newnum, i+1)
+                out[i] = p_index
+                return out
+        return {n:1}
+    return pf_helper(n, 2)
 
 def pf_sieve(n,primes):
     if n == 1:
